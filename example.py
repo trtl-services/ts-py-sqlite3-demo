@@ -33,7 +33,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS transactions (
             transactionHash text NOT NULL,
             paymendId text NOT NULL,
             extra text NOT NULL,
-            tikmestamp integer NOT NULL,
+            timestamp integer NOT NULL,
             confirms integer DEFAULT 0,
             created integer DEFAULT CURRENT_TIMESTAMP
         );""")
