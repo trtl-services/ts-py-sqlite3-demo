@@ -68,11 +68,11 @@ for addresses in c.execute('SELECT * from addresses;'):
         newIndex = knownBlockCount
 
     #scan each address for transactions
-    incoming_txs = json.loads(TRTLServices.scanAddress(address, int(blockIndex)))
+    incoming_txs = json.loads(TRTLServices.scanAddress(address, int(scanIndex)))
 
     if not incoming_txs:
 
-        print('[' + address + '] no transactions found between height: ' + str(blockIndex) + ' - ' + str(newIndex))
+        print('[' + address + '] no transactions found between height: ' + str(scanIndex) + ' - ' + str(newIndex))
     else:
         #loop through each found tx and insert it
         for tx in incoming_txs:
@@ -87,7 +87,7 @@ for addresses in c.execute('SELECT * from addresses;'):
             c.execute('UPDATE addresses SET scanIndex = ? WHERE address = ?')
 
             conn.commit()
-            print('[' + address + '] stored ' + len(incoming_tx) + ' transactions found between height: ' + str(blockIndex) + ' - ' + str(newIndex))
+            print('[' + address + '] stored ' + len(incoming_tx) + ' transactions found between height: ' + str(scanIndex) + ' - ' + str(newIndex))
 
 
 #load transactions
