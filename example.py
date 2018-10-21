@@ -85,7 +85,7 @@ for addresses in c.execute('SELECT * from addresses;'):
             
             print(tx)
             #store transactons, sfee = 0 for incoming
-            payload = (address, int(tx.amount), int(tx.fee), tx.blockIndex, tx.transactionHash, tx.paymendId, tx.extra, tx.timestamp, confirms)
+            payload = (address, int(tx.amount), int(tx.fee), tx.blockIndex, tx.transactionHash, tx.paymendId, tx.extra, tx.timestamp, tx.confirms)
             c.execute('INSERT INTO transactions (address, amount, fee, blockIndex, transactionHash, paymentId, extra, timestamp, confirms) VALUES (?,  ? , ?, ?, ?,  ? , ?, ?, ?)', payload)
             
             #update scanIndex of the scanned account.
