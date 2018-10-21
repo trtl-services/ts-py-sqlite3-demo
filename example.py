@@ -59,7 +59,7 @@ for addresses in c.execute('SELECT * from addresses;'):
     address = addresses[1]
     blockIndex = addresses[4]
     scanIndex = addresses[5]
-    newIndex = blockIndex + 100
+    newIndex = scanIndex + 100
 
     #check if addresses needs to be scanned
     getStatus = json.loads(TRTLServices.getStatus()) 
