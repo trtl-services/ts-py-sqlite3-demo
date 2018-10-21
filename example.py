@@ -3,6 +3,11 @@ from tswrapper import TRTLServices
 import sqlite3
 import json
 
+# This example shows how to create new addresses
+# scan them for incoming transactions by blockheight
+# and store them into a sqlite3 database
+
+
 #set token
 os.environ["TRTL_SERVICES_TOKEN"] = "<TOKEN>"
 
@@ -29,6 +34,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS transactions (
             address text NOT NULL,
             amount decimal(24, 2) DEFAULT 0.00,
             fee decimal(24, 2) DEFAULT 0.00,
+            sfee decimal(24, 2) DEFAULT 0.00,
             blockIndex integer NOT NULL,
             transactionHash text NOT NULL,
             paymendId text NOT NULL,
@@ -78,7 +84,7 @@ for addresses in c.execute('SELECT * from addresses;'):
         for tx in incoming_txs:
             
             print(tx)
-            #store transactons
+            #store transactons, sfee = 0 for incoming
             payload = (address, int(tx.amount), int(tx.fee), tx.blockIndex, tx.transactionHash, tx.paymendId, tx.extra, tx.timestamp, confirms)
             c.execute('INSERT INTO transactions (address, amount, fee, blockIndex, transactionHash, paymentId, extra, timestamp, confirms) VALUES (?,  ? , ?, ?, ?,  ? , ?, ?, ?)', payload)
             
