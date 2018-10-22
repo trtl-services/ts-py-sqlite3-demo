@@ -6,7 +6,7 @@ This example code demostrates how to use the [TRTL Services](https://trtl.servic
 
 - Python 3
 - SQLite 3
-- [ts-api-js](https://github.com/trtl-services/ts-api-js) library
+- [ts-api-py](https://github.com/trtl-services/ts-api-py) library
 - [TRTL.Service](https://trtl.services) auth token
 
 ## Credits
